@@ -41,7 +41,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'dbtest',
+    'openalex',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
