@@ -15,7 +15,7 @@ class Authors(models.Model):
 
 class AuthorsCountsByYear(models.Model):
     author_id = models.TextField(primary_key=True)
-    year = models.IntegerField(primary_key=True)
+    year = models.IntegerField()
     works_count = models.IntegerField(blank=True, null=True)
     cited_by_count = models.IntegerField(blank=True, null=True)
 
@@ -51,7 +51,7 @@ class ConceptsAncestors(models.Model):
 
 class ConceptsCountsByYear(models.Model):
     concept_id = models.TextField(primary_key=True)
-    year = models.IntegerField(primary_key=True)
+    year = models.IntegerField()
     works_count = models.IntegerField(blank=True, null=True)
     cited_by_count = models.IntegerField(blank=True, null=True)
 
@@ -97,7 +97,7 @@ class InstitutionsAssociatedInstitutions(models.Model):
 
 class InstitutionsCountsByYear(models.Model):
     institution_id = models.TextField(primary_key=True)
-    year = models.IntegerField(primary_key=True)
+    year = models.IntegerField()
     works_count = models.IntegerField(null=True)
     cited_by_count = models.IntegerField(null=True)
 
@@ -138,7 +138,7 @@ class Publishers(models.Model):
 
 class PublishersCountsByYear(models.Model):
     publisher_id = models.TextField(primary_key=True)
-    year = models.IntegerField(primary_key=True)
+    year = models.IntegerField()
     works_count = models.IntegerField(null=True)
     cited_by_count = models.IntegerField(null=True)
 
@@ -167,7 +167,7 @@ class Sources(models.Model):
 
 class SourcesCountsByYear(models.Model):
     source_id = models.TextField(primary_key=True)
-    year = models.IntegerField(primary_key=True)
+    year = models.IntegerField()
     works_count = models.IntegerField(null=True)
     cited_by_count = models.IntegerField(null=True)
 
@@ -206,11 +206,6 @@ class WorksPrimaryLocations(models.Model):
     version = models.TextField(null=True)
     license = models.TextField(null=True)
 
-    class Meta:
-        indexes = [
-            models.Index(fields=['work_id'], name='works_primary_locations_work_id_idx')
-        ]
-
 
 class WorksLocations(models.Model):
     work_id = models.TextField(null=True)
@@ -221,11 +216,6 @@ class WorksLocations(models.Model):
     version = models.TextField(null=True)
     license = models.TextField(null=True)
 
-    class Meta:
-        indexes = [
-            models.Index(fields=['work_id'], name='works_locations_work_id_idx')
-        ]
-
 
 class WorksBestOALocations(models.Model):
     work_id = models.TextField(null=True)
@@ -235,11 +225,6 @@ class WorksBestOALocations(models.Model):
     is_oa = models.BooleanField(null=True)
     version = models.TextField(null=True)
     license = models.TextField(null=True)
-
-    class Meta:
-        indexes = [
-            models.Index(fields=['work_id'], name='works_best_oa_locations_work_id_idx')
-        ]
 
 
 class WorksAuthorships(models.Model):
