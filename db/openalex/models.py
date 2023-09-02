@@ -272,6 +272,7 @@ class WorksOpenAccess(models.Model):
     is_oa = models.BooleanField(null=True)
     oa_status = models.TextField(null=True)
     oa_url = models.TextField(null=True)
+    any_repository_has_fulltext = models.BooleanField(null=True)
 
 
 class WorksReferencedWorks(models.Model):
