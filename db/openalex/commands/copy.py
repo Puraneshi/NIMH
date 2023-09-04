@@ -2,10 +2,10 @@ import psycopg2
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# .env variables
 load_dotenv()
 
-# Database connection parameters
+# Database parameters from .env
 db_params = {
     'dbname': os.getenv('DB_NAME'),
     'user': os.getenv('DB_USER'),
@@ -14,7 +14,7 @@ db_params = {
     'port': os.getenv('DB_PORT')
 }
 
-# Define the table names and corresponding CSV file paths
+# Table names and corresponding CSV file paths
 table_mapping = {
     'openalex_works': '/csv-files/works.csv.gz',
     'openalex_worksprimarylocations': '/csv-files/works_primary_locations.csv.gz',
@@ -29,7 +29,8 @@ table_mapping = {
     'openalex_worksreferencedworks': '/csv-files/works_referenced_works.csv.gz',
     'openalex_worksrelatedworks': '/csv-files/works_related_works.csv.gz'
 }
-
+# Table names and corresponding column names.
+# column names must match csv headers
 table_columns = {
     'openalex_works': ['id', 'doi', 'title', 'display_name', 'publication_year', 'publication_date', 'type',
                        'cited_by_count', 'is_retracted', 'is_paratext', 'cited_by_api_url', 'abstract_inverted_index'],
@@ -49,26 +50,22 @@ table_columns = {
     'openalex_worksreferencedworks': ['work_id', 'referenced_work_id'],
     'openalex_worksrelatedworks': ['work_id', 'related_work_id']
 }
-# print(os.getcwd()+'/csv-files/works.csv.gz')
 
-# Establish a connection to the database
+# Connect to the database
 conn = psycopg2.connect(**db_params)
-
+cursor = None
 try:
-    # Create a cursor
     cursor = conn.cursor()
 
-    # Loop through table mappings and execute the COPY command for each table
+    # Execute COPY for each table
     for table_name, columns in table_columns.items():
         copy_sql = f"COPY {table_name} ({', '.join(columns)}) FROM PROGRAM 'gunzip -c {os.getcwd() + table_mapping[table_name]}' CSV HEADER"
         cursor.execute(copy_sql)
 
-    # Commit the changes
     conn.commit()
 except psycopg2.Error as e:
     print(f"Error: {e}")
 finally:
-    # Close the cursor and the database connection
     if cursor:
         cursor.close()
     conn.close()
