@@ -9,7 +9,7 @@ with open('pmid.txt', 'r') as file:
 print(f'{len(pmids)} pmids, {len(set(pmids))} unique ids')
 
 api_url = "https://api.openalex.org/works/pmid:{}"
-jsonOutput_file = "openalex-snapshot/calls.jsonl"
+jsonOutput_file = "openalex-snapshot/data/works/calls.jsonl"
 failed_file = "failed_calls.txt"
 
 headers = {'User-Agent': 'mailto:rsnd.leo@gmail.com'}
