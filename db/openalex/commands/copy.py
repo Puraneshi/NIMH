@@ -17,17 +17,17 @@ db_params = {
 # Define the table names and corresponding CSV file paths
 table_mapping = {
     'openalex_works': '/csv-files/works.csv.gz',
-    'openalex.works_primary_locations': '/csv-files/works_primary_locations.csv.gz',
-    'openalex.works_locations': '/csv-files/works_locations.csv.gz',
-    'openalex.works_best_oa_locations': '/csv-files/works_best_oa_locations.csv.gz',
-    'openalex.works_authorships': '/csv-files/works_authorships.csv.gz',
-    'openalex.works_biblio': '/csv-files/works_biblio.csv.gz',
-    'openalex.works_concepts': '/csv-files/works_concepts.csv.gz',
-    'openalex.works_ids': '/csv-files/works_ids.csv.gz',
-    'openalex.works_mesh': '/csv-files/works_mesh.csv.gz',
-    'openalex.works_open_access': '/csv-files/works_open_access.csv.gz',
-    'openalex.works_referenced_works': '/csv-files/works_referenced_works.csv.gz',
-    'openalex.works_related_works': '/csv-files/works_related_works.csv.gz'
+    'openalex_worksprimarylocations': '/csv-files/works_primary_locations.csv.gz',
+    'openalex_workslocations': '/csv-files/works_locations.csv.gz',
+    'openalex_worksbestoalocations': '/csv-files/works_best_oa_locations.csv.gz',
+    'openalex_worksauthorships': '/csv-files/works_authorships.csv.gz',
+    'openalex_worksbiblio': '/csv-files/works_biblio.csv.gz',
+    'openalex_worksconcepts': '/csv-files/works_concepts.csv.gz',
+    'openalex_worksids': '/csv-files/works_ids.csv.gz',
+    'openalex_worksmesh': '/csv-files/works_mesh.csv.gz',
+    'openalex_worksopenaccess': '/csv-files/works_open_access.csv.gz',
+    'openalex_worksreferencedworks': '/csv-files/works_referenced_works.csv.gz',
+    'openalex_worksrelatedworks': '/csv-files/works_related_works.csv.gz'
 }
 
 # print(os.getcwd()+'/csv-files/works.csv.gz')
