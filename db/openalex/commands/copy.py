@@ -30,6 +30,25 @@ table_mapping = {
     'openalex_worksrelatedworks': '/csv-files/works_related_works.csv.gz'
 }
 
+table_columns = {
+    'openalex_works': ['id', 'doi', 'title', 'display_name', 'publication_year', 'publication_date', 'type',
+                       'cited_by_count', 'is_retracted', 'is_paratext', 'cited_by_api_url', 'abstract_inverted_index'],
+    'openalex_worksprimarylocations': ['work_id', 'source_id', 'landing_page_url', 'pdf_url', 'is_oa', 'version',
+                                       'license'],
+    'openalex_workslocations': ['work_id', 'source_id', 'landing_page_url', 'pdf_url', 'is_oa', 'version', 'license'],
+    'openalex_worksbestoalocations': ['work_id', 'source_id', 'landing_page_url', 'pdf_url', 'is_oa', 'version',
+                                      'license'],
+    'openalex_worksauthorships': ['work_id', 'author_position', 'author_id', 'institution_id',
+                                  'raw_affiliation_string'],
+    'openalex_worksbiblio': ['work_id', 'volume', 'issue', 'first_page', 'last_page'],
+    'openalex_worksconcepts': ['work_id', 'concept_id', 'score'],
+    'openalex_worksids': ['work_id', 'openalex', 'doi', 'mag', 'pmid', 'pmcid'],
+    'openalex_worksmesh': ['work_id', 'descriptor_ui', 'descriptor_name', 'qualifier_ui', 'qualifier_name',
+                           'is_major_topic'],
+    'openalex_worksopenaccess': ['work_id', 'is_oa', 'oa_status', 'oa_url', 'any_repository_has_fulltext'],
+    'openalex_worksreferencedworks': ['work_id', 'referenced_work_id'],
+    'openalex_worksrelatedworks': ['work_id', 'related_work_id']
+}
 # print(os.getcwd()+'/csv-files/works.csv.gz')
 
 # Establish a connection to the database
@@ -40,8 +59,8 @@ try:
     cursor = conn.cursor()
 
     # Loop through table mappings and execute the COPY command for each table
-    for table_name, csv_file_path in table_mapping.items():
-        copy_sql = f"COPY {table_name} FROM PROGRAM 'gunzip -c {os.getcwd()+csv_file_path}' CSV HEADER"
+    for table_name, columns in table_columns.items():
+        copy_sql = f"COPY {table_name} ({', '.join(columns)}) FROM PROGRAM 'gunzip -c {os.getcwd() + table_mapping[table_name]}' CSV HEADER"
         cursor.execute(copy_sql)
 
     # Commit the changes
