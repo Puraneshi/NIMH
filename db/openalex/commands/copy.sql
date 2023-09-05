@@ -1,1 +1,0 @@
-\copy openalex_worksopenaccess (work_id, is_oa, oa_status, oa_url, any_repository_has_fulltext) from program 'gunzip -c ~/PycharmProjects/NIMH/db/openalex/commands/csv-files/works_open_access.csv' csv header
