@@ -18,6 +18,7 @@ class AuthorsCountsByYear(models.Model):
     year = models.IntegerField()
     works_count = models.IntegerField(blank=True, null=True)
     cited_by_count = models.IntegerField(blank=True, null=True)
+    oa_works_count = models.IntegerField(blank=True, null=True)
 
 
 class AuthorsIds(models.Model):
@@ -54,6 +55,7 @@ class ConceptsCountsByYear(models.Model):
     year = models.IntegerField()
     works_count = models.IntegerField(blank=True, null=True)
     cited_by_count = models.IntegerField(blank=True, null=True)
+    oa_works_count = models.IntegerField(blank=True, null=True)
 
 
 class ConceptsIds(models.Model):
@@ -100,6 +102,7 @@ class InstitutionsCountsByYear(models.Model):
     year = models.IntegerField()
     works_count = models.IntegerField(null=True)
     cited_by_count = models.IntegerField(null=True)
+    oa_works_count = models.IntegerField(blank=True, null=True)
 
 
 class InstitutionsGeo(models.Model):
@@ -141,6 +144,7 @@ class PublishersCountsByYear(models.Model):
     year = models.IntegerField()
     works_count = models.IntegerField(null=True)
     cited_by_count = models.IntegerField(null=True)
+    oa_works_count = models.IntegerField(blank=True, null=True)
 
 
 class PublishersIds(models.Model):
@@ -170,6 +174,7 @@ class SourcesCountsByYear(models.Model):
     year = models.IntegerField()
     works_count = models.IntegerField(null=True)
     cited_by_count = models.IntegerField(null=True)
+    oa_works_count = models.IntegerField(blank=True, null=True)
 
 
 class SourcesIds(models.Model):
